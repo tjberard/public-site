@@ -1,0 +1,16 @@
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.coming-soon h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0 1.5rem;
+}
