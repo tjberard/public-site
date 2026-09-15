@@ -1,21 +1,22 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Public Site</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test hot module reload.
-        </p>
-      </div>
-    </>
+    <BrowserRouter>
+      <nav className="site-nav">
+        <NavLink to="/" end>
+          Home
+        </NavLink>
+        <NavLink to="/about">About</NavLink>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
