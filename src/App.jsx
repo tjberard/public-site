@@ -3,14 +3,21 @@ import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import './App.css'
 
+const navLinkClasses = ({ isActive }) =>
+  `text-sm font-medium uppercase tracking-wide transition-colors ${
+    isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+  }`
+
 function App() {
   return (
     <BrowserRouter>
-      <nav className="site-nav">
-        <NavLink to="/" end className="text-red-500 underline text-2xl">
+      <nav className="flex justify-center gap-8 py-6">
+        <NavLink to="/" end className={navLinkClasses}>
           Home
         </NavLink>
-        <NavLink to="/about" className="text-red-500 underline text-2xl">About</NavLink>
+        <NavLink to="/about" className={navLinkClasses}>
+          About
+        </NavLink>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
