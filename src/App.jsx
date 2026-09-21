@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx'
 import Resume from './pages/Resume.jsx'
 import CaseStudies from './pages/CaseStudies.jsx'
 import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
 import './App.css'
 
 const navLinkClasses = ({ isActive }) =>
@@ -41,6 +42,8 @@ function App() {
         </div>
 
         <Button
+          render={<Link to="/contact" />}
+          nativeButton={false}
           size="lg"
           className="justify-self-end rounded-full! border-white! bg-transparent! px-5! text-white! hover:bg-white! hover:text-primary-foreground!"
         >
@@ -52,6 +55,7 @@ function App() {
         <Route path="/resume" element={<Resume />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   )
