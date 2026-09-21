@@ -8,8 +8,8 @@ import Contact from './pages/Contact.jsx'
 import './App.css'
 
 const navLinkClasses = ({ isActive }) =>
-  `text-sm sm:text-sm font-medium tracking-wide transition-colors ${
-    isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+  `text-sm sm:text-sm font-medium tracking-wide no-underline transition-colors ${
+    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
   }`
 
 // The page content sits in a centered column (#root: max-width 1280px, 2rem padding),
@@ -22,11 +22,11 @@ function App() {
   return (
     <BrowserRouter>
       <nav
-        className="flex flex-wrap items-center justify-between gap-y-4 py-6 md:grid md:grid-cols-[1fr_auto_1fr]"
+        className="flex flex-wrap items-center justify-between gap-y-4 py-8 md:grid md:grid-cols-[1fr_auto_1fr]"
         style={{ marginInline: NAV_EDGE_PULL }}
       >
         <Link to="/" aria-label="Home" className="justify-self-start">
-          <img src="/logo-white.svg" alt="" className="h-12 w-12" />
+          <img src="/logo-navy.svg" alt="" className="h-12 w-12" />
         </Link>
 
         <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-6">
@@ -45,7 +45,7 @@ function App() {
           render={<Link to="/contact" />}
           nativeButton={false}
           size="lg"
-          className="justify-self-end rounded-full! border-white! bg-transparent! px-5! text-white! hover:bg-white! hover:text-primary-foreground!"
+          className="justify-self-end rounded-full! px-5! hover:bg-primary-hover"
         >
           Contact Me
         </Button>

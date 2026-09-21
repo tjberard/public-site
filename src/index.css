@@ -9,31 +9,38 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
-  color: #ffffff;
-  background-color: #0a192f;
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+
+  /* Light navy theme.
+     Contrast on the #fafafa background (WCAG AA needs 4.5:1 for text):
+       navy text        #0a192f  16.9:1
+       secondary text   #4a5a75   6.7:1
+       accent (teal)    #0f766e   5.2:1  (white text on it: 5.5:1) */
+  --background: #fafafa;
+  --foreground: #0a192f;
+  --card: #ffffff;
+  --card-foreground: #0a192f;
+  --popover: #ffffff;
+  --popover-foreground: #0a192f;
+  /* The single accent color: links, buttons, focus rings */
+  --primary: #0f766e;
+  --primary-foreground: #ffffff;
+  --primary-hover: #115e59;
+  /* Soft navy tints for subtle surfaces and secondary text */
+  --secondary: #eef1f6;
+  --secondary-foreground: #0a192f;
+  --muted: #eef1f6;
+  --muted-foreground: #4a5a75;
+  --accent: #eef1f6;
+  --accent-foreground: #0a192f;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: #d9e0ea;
+  --input: #d9e0ea;
+  --ring: #0f766e;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -54,8 +61,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #0a192f;
-  color: #ffffff;
+  line-height: 1.7;
 }
 
 #root {
@@ -91,6 +97,7 @@ body {
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -149,5 +156,34 @@ body {
   }
   html {
     @apply font-sans;
+  }
+
+  /* Typography and whitespace: generous spacing does more for a clean look
+     than any color choice. */
+  h1 {
+    @apply font-semibold tracking-tight text-foreground;
+    font-size: 2.25rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  @media (min-width: 40rem) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  h2 {
+    @apply text-2xl font-semibold tracking-tight text-foreground;
+    line-height: 1.25;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    @apply text-muted-foreground;
+    max-width: 65ch;
+    margin-inline: auto;
+    margin-bottom: 1.25rem;
+  }
+  a:not([data-slot="button"]) {
+    @apply text-primary underline underline-offset-4 transition-colors hover:text-primary-hover;
   }
 }
