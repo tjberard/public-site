@@ -45,7 +45,7 @@ function App() {
           render={<Link to="/contact" />}
           nativeButton={false}
           size="lg"
-          className="justify-self-end rounded-full! px-5! hover:bg-primary-hover"
+          className="justify-self-end rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
         >
           Contact Me
         </Button>
