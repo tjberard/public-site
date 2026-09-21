@@ -7,7 +7,7 @@ import About from './pages/About.jsx'
 import './App.css'
 
 const navLinkClasses = ({ isActive }) =>
-  `text-xs sm:text-sm font-medium uppercase tracking-wide transition-colors ${
+  `text-sm sm:text-sm font-medium tracking-wide transition-colors ${
     isActive ? 'text-white' : 'text-slate-400 hover:text-white'
   }`
 
@@ -28,7 +28,7 @@ function App() {
           <img src="/logo-white.svg" alt="" className="h-12 w-12" />
         </Link>
 
-        <div className="order-3 flex w-full justify-center gap-6 md:order-none md:w-auto md:gap-8">
+        <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-6">
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
@@ -44,7 +44,7 @@ function App() {
           size="lg"
           className="justify-self-end rounded-full! border-white! bg-transparent! px-5! text-white! hover:bg-white! hover:text-primary-foreground!"
         >
-          Contact
+          Contact Me
         </Button>
       </nav>
       <Routes>
