@@ -47,7 +47,7 @@ function App() {
           size="lg"
           className="justify-self-end rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
         >
-          Contact Me
+          Get in Touch
         </Button>
       </nav>
       <Routes>
