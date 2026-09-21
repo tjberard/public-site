@@ -1,3 +1,11 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+# Serve the app for any path so React Router can handle it (fixes 404s on
+# direct visits and refreshes of /resume, /contact, etc.). Real files such as
+# /assets/* and /logo-white.svg are still served as normal.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

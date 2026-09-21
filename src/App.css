@@ -1,8 +1,14 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 2rem 5rem;
   text-align: center;
+}
+
+/* Page content: plenty of breathing room below the nav */
+.page,
+.coming-soon {
+  padding-block: 5rem;
 }
 
 .site-nav {
