@@ -7,12 +7,12 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import './App.css'
 
-// Primary nav links: 16px, full-contrast navy, with a teal underline marking the current
+// Primary nav links: 16px, full-contrast navy, with a navy underline marking the current
 // page (so state isn't conveyed by color alone) and a faint underline on hover.
 const navLinkClasses = ({ isActive }) =>
   `py-2 text-base font-medium tracking-wide no-underline underline-offset-[10px] decoration-2 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-ring ${
     isActive
-      ? 'text-foreground underline decoration-primary'
+      ? 'text-foreground underline decoration-foreground'
       : 'text-foreground hover:decoration-foreground/30'
   }`
 
