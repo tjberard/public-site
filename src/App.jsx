@@ -7,9 +7,13 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import './App.css'
 
+// Primary nav links: 16px, full-contrast navy, with a teal underline marking the current
+// page (so state isn't conveyed by color alone) and a faint underline on hover.
 const navLinkClasses = ({ isActive }) =>
-  `text-sm sm:text-sm font-medium tracking-wide no-underline transition-colors ${
-    isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+  `py-2 text-base font-medium tracking-wide no-underline underline-offset-[10px] decoration-2 transition-colors hover:underline focus-visible:outline-2 focus-visible:outline-ring ${
+    isActive
+      ? 'text-foreground underline decoration-primary'
+      : 'text-foreground hover:decoration-foreground/30'
   }`
 
 // The page content sits in a centered column (#root: max-width 1280px, 2rem padding),
@@ -29,7 +33,7 @@ function App() {
           <img src="/logo-navy.svg" alt="" className="h-12 w-12" />
         </Link>
 
-        <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-6">
+        <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-10">
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
