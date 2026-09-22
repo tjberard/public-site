@@ -34,9 +34,6 @@ function App() {
         </Link>
 
         <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-10">
-          <NavLink to="/" end className={navLinkClasses}>
-            Home
-          </NavLink>
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
