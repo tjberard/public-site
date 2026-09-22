@@ -29,7 +29,17 @@ function App() {
         className="flex flex-wrap items-center justify-between gap-y-4 py-8"
         style={{ marginInline: NAV_EDGE_PULL }}
       >
-        <img src="/logo-navy.svg" alt="" className="h-12 w-12" />
+        <div className="flex flex-wrap items-baseline gap-x-3">
+          <Link
+            to="/"
+            className="text-xl font-semibold tracking-tight text-foreground no-underline hover:no-underline hover:text-foreground"
+          >
+            tylerberard.com
+          </Link>
+          <span className="text-sm text-slate-600">
+            Driving products from concept to growth
+          </span>
+        </div>
 
         <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-10">
           <NavLink to="/resume" className={navLinkClasses}>
