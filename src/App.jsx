@@ -29,7 +29,7 @@ function App() {
         className="flex flex-wrap items-center justify-between gap-y-4 py-8"
         style={{ marginInline: NAV_EDGE_PULL }}
       >
-        <div className="flex flex-wrap items-baseline gap-x-3">
+        <div className="flex w-full flex-wrap items-baseline justify-center gap-x-3 md:w-auto md:justify-start">
           <Link
             to="/"
             className="text-base font-bold tracking-tight text-foreground no-underline hover:no-underline hover:text-foreground"
