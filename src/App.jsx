@@ -32,7 +32,7 @@ function App() {
         <div className="flex flex-wrap items-baseline gap-x-3">
           <Link
             to="/"
-            className="text-xl font-semibold tracking-tight text-foreground no-underline hover:no-underline hover:text-foreground"
+            className="text-base font-bold tracking-tight text-foreground no-underline hover:no-underline hover:text-foreground"
           >
             tylerberard.com
           </Link>
