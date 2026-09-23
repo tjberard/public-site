@@ -26,17 +26,22 @@ function App() {
   return (
     <BrowserRouter>
       <nav
-        className="flex flex-wrap items-center justify-between gap-y-4 py-8 md:grid md:grid-cols-[1fr_auto_1fr]"
+        className="flex flex-wrap items-center justify-between gap-y-4 py-8"
         style={{ marginInline: NAV_EDGE_PULL }}
       >
-        <Link to="/" aria-label="Home" className="justify-self-start">
-          <img src="/logo-navy.svg" alt="" className="h-12 w-12" />
-        </Link>
+        <div className="flex w-full flex-wrap items-baseline justify-center gap-x-3 md:w-auto md:justify-start">
+          <Link
+            to="/"
+            className="text-base font-semibold tracking-tight text-foreground no-underline hover:no-underline hover:text-foreground"
+          >
+            tylerberard.com
+          </Link>
+          <span className="text-sm text-slate-600">
+            Driving products from concept to growth
+          </span>
+        </div>
 
-        <div className="order-3 flex w-full justify-center gap-4 md:order-none md:w-auto md:gap-10">
-          <NavLink to="/" end className={navLinkClasses}>
-            Home
-          </NavLink>
+        <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-10">
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
@@ -46,16 +51,16 @@ function App() {
           <NavLink to="/about" className={navLinkClasses}>
             About
           </NavLink>
-        </div>
 
-        <Button
-          render={<Link to="/contact" />}
-          nativeButton={false}
-          size="lg"
-          className="justify-self-end rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
-        >
-          Get in Touch
-        </Button>
+          <Button
+            render={<Link to="/contact" />}
+            nativeButton={false}
+            size="lg"
+            className="rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
+          >
+            Get in Touch
+          </Button>
+        </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
