@@ -41,7 +41,7 @@ function App() {
           </span>
         </div>
 
-        <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-10">
+        <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-6">
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
