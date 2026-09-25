@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, NavLink, Link, Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Home from './pages/Home.jsx'
-import Resume from './pages/Resume.jsx'
 import MyWork from './pages/MyWork.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -65,7 +64,8 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
+        {/* Resume content now lives on About — keep old /resume links working */}
+        <Route path="/resume" element={<Navigate to="/about" replace />} />
         <Route path="/my-work" element={<MyWork />} />
         {/* Old URL — send any existing links to the renamed page */}
         <Route path="/case-studies" element={<Navigate to="/my-work" replace />} />
