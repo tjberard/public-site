@@ -70,7 +70,7 @@ function HomeHero() {
 
         <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
           <Button
-            render={<Link to="/case-studies" />}
+            render={<Link to="/my-work" />}
             nativeButton={false}
             size="lg"
             className="rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"

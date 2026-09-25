@@ -18,7 +18,7 @@ export const featuredWork = [
     summary: 'Rebuilt a multi-step checkout into a single flow.',
     metric: '+32%',
     metricLabel: 'conversion',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'navy',
   },
   {
@@ -27,7 +27,7 @@ export const featuredWork = [
     summary: 'Cut time-to-first-value for new customers in half.',
     metric: '2x',
     metricLabel: 'faster activation',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'teal',
   },
   {
@@ -36,7 +36,7 @@ export const featuredWork = [
     summary: 'Introduced a usage-based tier for growing teams.',
     metric: '+18%',
     metricLabel: 'ARPU',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'slate',
   },
   {
@@ -45,14 +45,14 @@ export const featuredWork = [
     summary: 'Took a companion app from concept to the app stores.',
     metric: '4.8★',
     metricLabel: 'store rating',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'sand',
   },
   {
     title: 'Analytics platform',
     category: 'Case study',
     summary: 'Gave every team a shared source of truth for metrics.',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'navy',
   },
   {
@@ -61,7 +61,7 @@ export const featuredWork = [
     summary: 'Opened a new acquisition channel through partner APIs.',
     metric: '12',
     metricLabel: 'partners live',
-    href: '/case-studies',
+    href: '/my-work',
     tone: 'teal',
   },
 ]

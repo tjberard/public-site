@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink, Link, Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Home from './pages/Home.jsx'
 import Resume from './pages/Resume.jsx'
-import CaseStudies from './pages/CaseStudies.jsx'
+import MyWork from './pages/MyWork.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import './App.css'
@@ -45,8 +45,8 @@ function App() {
           <NavLink to="/resume" className={navLinkClasses}>
             Resume
           </NavLink>
-          <NavLink to="/case-studies" className={navLinkClasses}>
-            Case Studies
+          <NavLink to="/my-work" className={navLinkClasses}>
+            My Work
           </NavLink>
           <NavLink to="/about" className={navLinkClasses}>
             About
@@ -65,7 +65,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/my-work" element={<MyWork />} />
+        {/* Old URL — send any existing links to the renamed page */}
+        <Route path="/case-studies" element={<Navigate to="/my-work" replace />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
