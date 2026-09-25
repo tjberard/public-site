@@ -21,57 +21,32 @@
   padding: 2em;
 }
 
-/* ---------- Homepage "Selected work" carousel ---------- */
-.work-carousel-viewport {
-  overflow: hidden;
-  /* Soft fade at both edges */
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
-  padding-block: 0.75rem; /* room for the hover lift + shadow */
+/* ---------- Homepage "Selected work" entrance animation ---------- */
+/* Each piece starts blurred, transparent and slightly lower, then settles into place.
+   The delay per piece is set inline (--reveal-delay) to create the stagger. */
+.reveal {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease-out,
+    filter 0.7s ease-out,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
-.work-carousel-track {
-  display: flex;
-  width: max-content;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  animation: work-marquee var(--marquee-duration, 45s) linear infinite;
+.reveal[data-visible='true'] {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
 }
 
-/* Spacing lives on each item (not `gap`) so both copies are exactly equal width
-   and the -50% loop point lines up perfectly. */
-.work-carousel-track > li {
-  padding-right: 1.25rem;
-}
-
-.work-carousel-track:hover,
-.work-carousel-track:focus-within,
-.work-carousel-track[data-paused='true'] {
-  animation-play-state: paused;
-}
-
-@keyframes work-marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* Reduced motion: no auto-scroll — a normal swipe/scroll row instead */
+/* Reduced motion: show everything immediately, no movement */
 @media (prefers-reduced-motion: reduce) {
-  .work-carousel-viewport {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-  .work-carousel-track {
-    animation: none;
-  }
-  .work-carousel-track > li {
-    scroll-snap-align: start;
-  }
-  .work-carousel-clone,
-  .work-carousel-toggle {
-    display: none;
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
   }
 }

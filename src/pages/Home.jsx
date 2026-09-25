@@ -1,12 +1,12 @@
 import HomeHero from '@/components/HomeHero.jsx'
-import WorkCarousel from '@/components/WorkCarousel.jsx'
+import FeaturedWork from '@/components/FeaturedWork.jsx'
 import { featuredWork } from '@/data/featuredWork.js'
 
 function Home() {
   return (
     <div className="pb-8">
       <HomeHero />
-      <WorkCarousel items={featuredWork} />
+      <FeaturedWork items={featuredWork} />
     </div>
   )
 }

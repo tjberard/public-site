@@ -1,14 +1,15 @@
-// Tiles shown in the scrolling "Selected work" strip on the homepage.
-// Add, remove or reorder entries here — the strip updates automatically.
+// Projects for the "Selected work" section on the homepage.
+// The homepage shows the FIRST THREE entries as cards — reorder to choose which ones.
 //
 //   title       Short project name (required)
 //   category    Small label above the title, e.g. "Case study", "Launch", "Talk"
 //   summary     One line on the outcome — keep it under ~90 characters
-//   href        Where the tile links. Starts with "/" = page on this site;
+//   href        Where the card links. Starts with "/" = page on this site;
 //               anything else (https://…) opens in a new tab. Leave out for no link.
 //   image       Optional cover image, e.g. "/work/checkout.jpg" (put the file in /public/work/).
-//               Without one, the tile uses the solid `tone` color instead.
-//   tone        Background when there's no image: "navy" | "teal" | "slate" | "sand"
+//               A 4:3 landscape image works best (e.g. 1200x900).
+//               Without one, the card shows the solid `tone` color instead.
+//   tone        Preview color when there's no image: "navy" | "teal" | "slate" | "sand"
 //   metric      Optional headline number, e.g. "+32%" with metricLabel "conversion"
 
 export const featuredWork = [
