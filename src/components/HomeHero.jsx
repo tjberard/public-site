@@ -83,25 +83,25 @@ function HomeHero() {
         <Reveal show={inView} step={3}>
           <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
             <Button
-              render={<Link to="/my-work" />}
+              render={<Link to="/contact" />}
               nativeButton={false}
               size="lg"
               className="group rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
             >
-              View my work
+              Reach out
               <ArrowRight
                 aria-hidden="true"
                 className="transition-transform duration-200 group-hover:translate-x-0.5"
               />
             </Button>
             <Button
-              render={<Link to="/resume" />}
+              render={<Link to="/about" />}
               nativeButton={false}
               size="lg"
               variant="outline"
               className="rounded-full! px-5!"
             >
-              Resume
+              About me
             </Button>
           </div>
         </Reveal>
