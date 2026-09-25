@@ -2,20 +2,16 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Reveal, useInView } from '@/components/Reveal.jsx'
-import Eyebrow from '@/components/Eyebrow.jsx'
 
-// Homepage "Selected work" section: a centered intro above three static cards.
+// Homepage "Selected work" section: a centered heading above three static cards.
 // Layout inspired by shadcn/studio "Portfolio 14".
 // The cards come from src/data/featuredWork.js (the first three entries are shown).
 //
 // Entrance animation: the same one the hero uses (see Reveal.jsx). When this section
-// scrolls into view, the label, heading, intro and button appear in turn, then the cards.
+// scrolls into view, the heading and button appear in turn, then the cards.
 
 const content = {
-  eyebrow: 'Selected work',
   title: 'Work that moves the numbers',
-  intro:
-    'A few recent projects, from first concept through launch and growth. Each one started with a customer problem and ended with a measurable result.',
   ctaLabel: 'See all work',
   ctaHref: '/my-work',
 }
@@ -114,20 +110,14 @@ function FeaturedWork({ items }) {
   if (!cards.length) return null
 
   return (
-    <section ref={ref} aria-labelledby="featured-work-title" className="mt-24 lg:mt-32">
-      <div className="mb-12 space-y-4 text-center md:mb-16">
+    <section ref={ref} aria-labelledby="featured-work-title" className="mt-14 lg:mt-20">
+      <div className="mb-8 space-y-5 text-center md:mb-10">
         <Reveal show={inView} start={start} step={0}>
-          <Eyebrow>{content.eyebrow}</Eyebrow>
-        </Reveal>
-        <Reveal show={inView} start={start} step={1}>
           <h2 id="featured-work-title" className="m-0 text-3xl lg:text-4xl">
             {content.title}
           </h2>
         </Reveal>
-        <Reveal show={inView} start={start} step={2}>
-          <p className="m-0 mx-auto max-w-2xl text-lg">{content.intro}</p>
-        </Reveal>
-        <Reveal show={inView} start={start} step={3}>
+        <Reveal show={inView} start={start} step={1}>
           <Button
             render={<Link to={content.ctaHref} />}
             nativeButton={false}
@@ -146,7 +136,7 @@ function FeaturedWork({ items }) {
       <ul className="m-0 grid list-none gap-6 p-0 md:grid-cols-3">
         {cards.map((item, i) => (
           <li key={item.title}>
-            <Reveal show={inView} start={start} step={4 + i} className="h-full">
+            <Reveal show={inView} start={start} step={2 + i} className="h-full">
               <WorkCard item={item} />
             </Reveal>
           </li>
