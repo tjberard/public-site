@@ -2,10 +2,14 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Reveal, useInView } from '@/components/Reveal.jsx'
+import Eyebrow from '@/components/Eyebrow.jsx'
 
 // Homepage hero: greeting, photo, short intro and two calls to action.
 // Edit the `content` object below to change the words.
 // For the photo, drop an image at /public/headshot.jpg (square, ~800x800 works well).
+// On page load the hero plays the same entrance animation as the rest of the homepage
+// (see Reveal.jsx): label, headline, intro and buttons in turn, with the photo alongside.
 const content = {
   eyebrow: 'Product leader',
   greeting: "Hi, I'm Tyler.",
@@ -48,49 +52,64 @@ function HeroPhoto({ src, alt, initials }) {
 }
 
 function HomeHero() {
+  const [ref, inView] = useInView()
+
   return (
-    <section className="flex flex-col-reverse items-center gap-12 pt-8 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:pt-16 lg:text-left">
+    <section
+      ref={ref}
+      className="flex flex-col-reverse items-center gap-12 pt-8 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:pt-16 lg:text-left"
+    >
       <div className="max-w-2xl">
-        <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-sm font-medium text-muted-foreground lg:mx-0">
-          <span className="size-2 rounded-full bg-primary" aria-hidden="true" />
-          {content.eyebrow}
-        </p>
+        <Reveal show={inView} step={0}>
+          <Eyebrow className="mb-5">{content.eyebrow}</Eyebrow>
+        </Reveal>
 
-        <h1 className="m-0 mb-5">
-          <span className="block text-primary">
-            {content.greeting}{' '}
-            <span role="img" aria-label="waving hand">
-              👋
+        <Reveal show={inView} step={1}>
+          <h1 className="m-0 mb-5">
+            <span className="block text-primary">
+              {content.greeting}{' '}
+              <span role="img" aria-label="waving hand">
+                👋
+              </span>
             </span>
-          </span>
-          {content.headline}
-        </h1>
+            {content.headline}
+          </h1>
+        </Reveal>
 
-        <p className="mb-8 text-lg lg:mx-0">{content.intro}</p>
+        <Reveal show={inView} step={2}>
+          <p className="mb-8 text-lg lg:mx-0">{content.intro}</p>
+        </Reveal>
 
-        <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
-          <Button
-            render={<Link to="/my-work" />}
-            nativeButton={false}
-            size="lg"
-            className="rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
-          >
-            View my work
-            <ArrowRight aria-hidden="true" />
-          </Button>
-          <Button
-            render={<Link to="/resume" />}
-            nativeButton={false}
-            size="lg"
-            variant="outline"
-            className="rounded-full! px-5!"
-          >
-            Resume
-          </Button>
-        </div>
+        <Reveal show={inView} step={3}>
+          <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+            <Button
+              render={<Link to="/my-work" />}
+              nativeButton={false}
+              size="lg"
+              className="group rounded-full! bg-[#0a192f] px-5! text-white hover:bg-[#1d3557]"
+            >
+              View my work
+              <ArrowRight
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-0.5"
+              />
+            </Button>
+            <Button
+              render={<Link to="/resume" />}
+              nativeButton={false}
+              size="lg"
+              variant="outline"
+              className="rounded-full! px-5!"
+            >
+              Resume
+            </Button>
+          </div>
+        </Reveal>
       </div>
 
-      <HeroPhoto src={content.photo} alt={content.photoAlt} initials={content.initials} />
+      <Reveal show={inView} step={1.5} className="shrink-0">
+        <HeroPhoto src={content.photo} alt={content.photoAlt} initials={content.initials} />
+      </Reveal>
     </section>
   )
 }

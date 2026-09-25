@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { Reveal, useInView } from '@/components/Reveal.jsx'
+import Eyebrow from '@/components/Eyebrow.jsx'
 
 // Homepage "Selected work" section: a centered intro above three static cards.
 // Layout inspired by shadcn/studio "Portfolio 14".
 // The cards come from src/data/featuredWork.js (the first three entries are shown).
 //
-// Entrance animation: when the section scrolls into view, the intro and then each card
-// fade up out of a soft blur, one after another. With "reduce motion" turned on in the
-// OS, everything simply appears with no movement.
+// Entrance animation: the same one the hero uses (see Reveal.jsx). When this section
+// scrolls into view, the label, heading, intro and button appear in turn, then the cards.
 
 const content = {
   eyebrow: 'Selected work',
@@ -26,45 +26,6 @@ const tones = {
   teal: 'bg-[#0f766e] text-white',
   slate: 'bg-[#e3e8f0] text-[#0a192f]',
   sand: 'bg-[#f3ede3] text-[#0a192f]',
-}
-
-// Becomes true once `ref` has scrolled into view (and stays true).
-function useInView(options = { threshold: 0.15 }) {
-  const ref = useRef(null)
-  const [inView, setInView] = useState(false)
-
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-    if (typeof IntersectionObserver === 'undefined') {
-      setInView(true)
-      return
-    }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setInView(true)
-        observer.disconnect()
-      }
-    }, options)
-    observer.observe(node)
-    return () => observer.disconnect()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  return [ref, inView]
-}
-
-// Wraps a child in the blur-and-fade-up entrance. `delay` is in milliseconds.
-function Reveal({ show, delay = 0, className = '', children }) {
-  return (
-    <div
-      className={`reveal ${className}`}
-      data-visible={show}
-      style={{ '--reveal-delay': `${delay}ms` }}
-    >
-      {children}
-    </div>
-  )
 }
 
 function CardLink({ href, children, ...props }) {
@@ -147,27 +108,26 @@ function WorkCard({ item }) {
 }
 
 function FeaturedWork({ items }) {
-  const [ref, inView] = useInView()
+  // If this section is already visible on load, let the hero (4 steps) play first.
+  const [ref, inView, start] = useInView({ waitSteps: 4 })
   const cards = (items ?? []).slice(0, 3)
   if (!cards.length) return null
 
   return (
     <section ref={ref} aria-labelledby="featured-work-title" className="mt-24 lg:mt-32">
       <div className="mb-12 space-y-4 text-center md:mb-16">
-        <Reveal show={inView}>
-          <p className="m-0 mx-auto text-sm font-medium uppercase tracking-[0.14em] text-primary">
-            {content.eyebrow}
-          </p>
+        <Reveal show={inView} start={start} step={0}>
+          <Eyebrow>{content.eyebrow}</Eyebrow>
         </Reveal>
-        <Reveal show={inView} delay={80}>
+        <Reveal show={inView} start={start} step={1}>
           <h2 id="featured-work-title" className="m-0 text-3xl lg:text-4xl">
             {content.title}
           </h2>
         </Reveal>
-        <Reveal show={inView} delay={160}>
+        <Reveal show={inView} start={start} step={2}>
           <p className="m-0 mx-auto max-w-2xl text-lg">{content.intro}</p>
         </Reveal>
-        <Reveal show={inView} delay={240}>
+        <Reveal show={inView} start={start} step={3}>
           <Button
             render={<Link to={content.ctaHref} />}
             nativeButton={false}
@@ -186,7 +146,7 @@ function FeaturedWork({ items }) {
       <ul className="m-0 grid list-none gap-6 p-0 md:grid-cols-3">
         {cards.map((item, i) => (
           <li key={item.title}>
-            <Reveal show={inView} delay={360 + i * 150} className="h-full">
+            <Reveal show={inView} start={start} step={4 + i} className="h-full">
               <WorkCard item={item} />
             </Reveal>
           </li>
