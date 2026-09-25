@@ -20,3 +20,58 @@
 .card {
   padding: 2em;
 }
+
+/* ---------- Homepage "Selected work" carousel ---------- */
+.work-carousel-viewport {
+  overflow: hidden;
+  /* Soft fade at both edges */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  padding-block: 0.75rem; /* room for the hover lift + shadow */
+}
+
+.work-carousel-track {
+  display: flex;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: work-marquee var(--marquee-duration, 45s) linear infinite;
+}
+
+/* Spacing lives on each item (not `gap`) so both copies are exactly equal width
+   and the -50% loop point lines up perfectly. */
+.work-carousel-track > li {
+  padding-right: 1.25rem;
+}
+
+.work-carousel-track:hover,
+.work-carousel-track:focus-within,
+.work-carousel-track[data-paused='true'] {
+  animation-play-state: paused;
+}
+
+@keyframes work-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reduced motion: no auto-scroll — a normal swipe/scroll row instead */
+@media (prefers-reduced-motion: reduce) {
+  .work-carousel-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .work-carousel-track {
+    animation: none;
+  }
+  .work-carousel-track > li {
+    scroll-snap-align: start;
+  }
+  .work-carousel-clone,
+  .work-carousel-toggle {
+    display: none;
+  }
+}
