@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button"
+import HomeHero from '@/components/HomeHero.jsx'
+import FeaturedWork from '@/components/FeaturedWork.jsx'
+import { featuredWork } from '@/data/featuredWork.js'
 
 function Home() {
   return (
-    <div className="coming-soon">
-      <h1>Coming Soon</h1>
-      <p>This page is a placeholder — tell me what you'd like it to say.</p>
+    <div className="pb-8">
+      <HomeHero />
+      <FeaturedWork items={featuredWork} />
     </div>
   )
 }

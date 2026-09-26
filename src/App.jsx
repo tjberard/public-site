@@ -1,8 +1,7 @@
-import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, NavLink, Link, Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Home from './pages/Home.jsx'
-import Resume from './pages/Resume.jsx'
-import CaseStudies from './pages/CaseStudies.jsx'
+import MyWork from './pages/MyWork.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import './App.css'
@@ -41,12 +40,13 @@ function App() {
           </span>
         </div>
 
-        <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-10">
-          <NavLink to="/resume" className={navLinkClasses}>
-            Resume
+        <div className="flex w-full flex-wrap items-center justify-center gap-4 md:w-auto md:justify-end md:gap-6">
+          {/* `end` so Home is only highlighted on "/" itself, not on every page */}
+          <NavLink to="/" end className={navLinkClasses}>
+            Home
           </NavLink>
-          <NavLink to="/case-studies" className={navLinkClasses}>
-            Case Studies
+          <NavLink to="/my-work" className={navLinkClasses}>
+            My Work
           </NavLink>
           <NavLink to="/about" className={navLinkClasses}>
             About
@@ -64,8 +64,11 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/case-studies" element={<CaseStudies />} />
+        {/* Resume content now lives on About — keep old /resume links working */}
+        <Route path="/resume" element={<Navigate to="/about" replace />} />
+        <Route path="/my-work" element={<MyWork />} />
+        {/* Old URL — send any existing links to the renamed page */}
+        <Route path="/case-studies" element={<Navigate to="/my-work" replace />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

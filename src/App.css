@@ -20,3 +20,33 @@
 .card {
   padding: 2em;
 }
+
+/* ---------- Entrance animation (shared by every section, see Reveal.jsx) ---------- */
+/* Each piece starts blurred, transparent and slightly lower, then settles into place.
+   The delay per piece comes from its step number (--reveal-delay) to create the stagger. */
+.reveal {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease-out,
+    filter 0.7s ease-out,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal[data-visible='true'] {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* Reduced motion: show everything immediately, no movement */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
