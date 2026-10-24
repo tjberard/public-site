@@ -1,9 +1,8 @@
-import ComingSoon from '@/components/ComingSoon.jsx'
-
 function MyWork() {
   return (
     <div className="page">
-      <ComingSoon as="h1" title="My Work" message="Case studies and project write-ups are on the way. Check back soon." />
+      <h1>My Work</h1>
+      <p>This page is a placeholder — tell me what you'd like it to say.</p>
     </div>
   )
 }

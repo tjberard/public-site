@@ -1,9 +1,8 @@
-import ComingSoon from '@/components/ComingSoon.jsx'
-
 function About() {
   return (
     <div className="page">
-      <ComingSoon as="h1" title="About" message="A fuller look at my background and experience is on the way. Check back soon." />
+      <h1>About</h1>
+      <p>This page is a placeholder — tell me what you'd like it to say.</p>
     </div>
   )
 }
