@@ -19,7 +19,7 @@ export const featuredWork = [
     summary: 'Rebuilt a multi-step checkout into a single flow.',
     metric: '+32%',
     metricLabel: 'conversion',
-    href: '/my-work',
+    href: '/my-work/case-studies/case-study-1',
     tone: 'navy',
   },
   {
@@ -28,7 +28,7 @@ export const featuredWork = [
     summary: 'Cut time-to-first-value for new customers in half.',
     metric: '2x',
     metricLabel: 'faster activation',
-    href: '/my-work',
+    href: '/my-work/case-studies/case-study-2',
     tone: 'teal',
   },
   {
@@ -37,7 +37,7 @@ export const featuredWork = [
     summary: 'Introduced a usage-based tier for growing teams.',
     metric: '+18%',
     metricLabel: 'ARPU',
-    href: '/my-work',
+    href: '/my-work/case-studies/case-study-3',
     tone: 'slate',
   },
   {

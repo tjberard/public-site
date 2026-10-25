@@ -4,6 +4,9 @@ import Home from './pages/Home.jsx'
 import MyWork from './pages/MyWork.jsx'
 import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
+import CaseStudy1 from './pages/my-work/case-studies/CaseStudy1.jsx'
+import CaseStudy2 from './pages/my-work/case-studies/CaseStudy2.jsx'
+import CaseStudy3 from './pages/my-work/case-studies/CaseStudy3.jsx'
 import './App.css'
 
 // Primary nav links: 16px, full-contrast navy, with a navy underline marking the current
@@ -67,6 +70,11 @@ function App() {
         {/* Resume content now lives on About — keep old /resume links working */}
         <Route path="/resume" element={<Navigate to="/about" replace />} />
         <Route path="/my-work" element={<MyWork />} />
+        {/* Case studies — one page each, linked from the homepage cards */}
+        <Route path="/my-work/case-studies" element={<Navigate to="/my-work" replace />} />
+        <Route path="/my-work/case-studies/case-study-1" element={<CaseStudy1 />} />
+        <Route path="/my-work/case-studies/case-study-2" element={<CaseStudy2 />} />
+        <Route path="/my-work/case-studies/case-study-3" element={<CaseStudy3 />} />
         {/* Old URL — send any existing links to the renamed page */}
         <Route path="/case-studies" element={<Navigate to="/my-work" replace />} />
         <Route path="/about" element={<About />} />
