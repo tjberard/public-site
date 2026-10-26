@@ -67,16 +67,12 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Resume content now lives on About — keep old /resume links working */}
-        <Route path="/resume" element={<Navigate to="/about" replace />} />
         <Route path="/my-work" element={<MyWork />} />
         {/* Case studies — one page each, linked from the homepage cards */}
         <Route path="/my-work/case-studies" element={<Navigate to="/my-work" replace />} />
         <Route path="/my-work/case-studies/case-study-1" element={<CaseStudy1 />} />
         <Route path="/my-work/case-studies/case-study-2" element={<CaseStudy2 />} />
         <Route path="/my-work/case-studies/case-study-3" element={<CaseStudy3 />} />
-        {/* Old URL — send any existing links to the renamed page */}
-        <Route path="/case-studies" element={<Navigate to="/my-work" replace />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
